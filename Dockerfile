@@ -18,8 +18,11 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
+
 RUN npm install
+RUN rm -rf public/build
 RUN npm run build
+RUN cat public/build/manifest.json
 
 RUN php artisan config:clear
 RUN php artisan route:clear
