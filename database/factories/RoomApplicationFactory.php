@@ -13,10 +13,10 @@ class RoomApplicationFactory extends Factory
         return [
             'student_id' => Student::query()->inRandomOrder()->value('id'),
             'room_id' => Room::query()->inRandomOrder()->value('id'),
-            'application_date' => fake()->dateTimeBetween('-2 months', 'now'),
-            'status' => fake()->randomElement(['pending', 'approved', 'rejected']),
-            'reason' => fake()->sentence(12),
-            'remarks' => fake()->optional()->sentence(),
+            'application_date' => $this->faker->dateTimeBetween('-2 months', 'now'),
+            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
+            'reason' => $this->faker->sentence(12),
+            'remarks' => $this->faker->optional()->sentence(),
         ];
     }
 }

@@ -11,13 +11,13 @@ class PaymentFactory extends Factory
     {
         return [
             'tenant_id' => Tenant::query()->inRandomOrder()->value('id'),
-            'amount' => fake()->randomFloat(2, 2500, 6500),
-            'payment_date' => fake()->dateTimeBetween('-8 months', 'now'),
-            'due_date' => fake()->dateTimeBetween('-8 months', '+1 month'),
-            'payment_method' => fake()->randomElement(['cash', 'gcash', 'bank_transfer']),
-            'reference_number' => fake()->unique()->bothify('PAY-######'),
-            'status' => fake()->randomElement(['paid', 'pending', 'overdue']),
-            'notes' => fake()->optional()->sentence(),
+            'amount' => $this->faker->randomFloat(2, 2500, 6500),
+            'payment_date' => $this->faker->dateTimeBetween('-8 months', 'now'),
+            'due_date' => $this->faker->dateTimeBetween('-8 months', '+1 month'),
+            'payment_method' => $this->faker->randomElement(['cash', 'gcash', 'bank_transfer']),
+            'reference_number' => $this->faker->unique()->bothify('PAY-######'),
+            'status' => $this->faker->randomElement(['paid', 'pending', 'overdue']),
+            'notes' => $this->faker->optional()->sentence(),
         ];
     }
 }

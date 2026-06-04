@@ -9,16 +9,21 @@ class VisitorLogFactory extends Factory
 {
     public function definition(): array
     {
-        $timeIn = fake()->dateTimeBetween('-1 month', 'now');
+        $timeIn = $this->faker->dateTimeBetween('-1 month', 'now');
 
         return [
             'tenant_id' => Tenant::query()->inRandomOrder()->value('id'),
-            'visitor_name' => fake()->name(),
-            'visitor_phone' => fake()->phoneNumber(),
+            'visitor_name' => $this->faker->name(),
+            'visitor_phone' => $this->faker->phoneNumber(),
             'visit_date' => $timeIn,
-            'purpose' => fake()->randomElement(['Family visit', 'Study group', 'Delivery', 'Maintenance']),
+            'purpose' => $this->faker->randomElement([
+                'Family visit',
+                'Study group',
+                'Delivery',
+                'Maintenance'
+            ]),
             'time_in' => $timeIn,
-            'time_out' => fake()->optional()->dateTimeBetween($timeIn, 'now'),
+            'time_out' => $this->faker->optional()->dateTimeBetween($timeIn, 'now'),
         ];
     }
 }

@@ -13,10 +13,10 @@ class TenantFactory extends Factory
         return [
             'student_id' => Student::query()->inRandomOrder()->value('id'),
             'room_id' => Room::query()->inRandomOrder()->value('id'),
-            'check_in_date' => fake()->dateTimeBetween('-1 year', 'now'),
+            'check_in_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'check_out_date' => null,
             'status' => 'active',
-            'remarks' => fake()->optional()->sentence(),
+            'remarks' => $this->faker->optional()->sentence(),
         ];
     }
 }
